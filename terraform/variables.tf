@@ -11,5 +11,3 @@ variable "clusterName" {
 }
 
 ##
-##
-##
