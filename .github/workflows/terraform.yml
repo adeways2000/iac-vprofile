@@ -11,7 +11,7 @@ on:
       - main
     paths:
       - terraform/**
-      
+
 env:
  # Credentials for deployment to AWS
  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -24,14 +24,14 @@ env:
 jobs:
    terraform:
      name: "Apply terraform code changes"
-     run-on: ubuntu-latest
+     runs-on: ubuntu-latest
      defaults:
        run:
          shell: bash
          working-directory: ./terraform
 
-      steps:
-       - name: Checkout source code
+     steps:
+       - name: Checkout source code 
          uses: actions/checkout@v4
 
        - name: Setup Terraform with specified version on the runner
@@ -56,11 +56,9 @@ jobs:
          run: terraform plan -no-color -input=false -out planfile
          continue-on-error: true
 
-        - name: Terraform plan staus
-          if: steps.plan.outcome == 'failure'
-          run: exit 1
-          
-
+       - name: Terraform plan status
+         if: steps.plan.outcome == 'failure' 
+         run: exit 1     
 
 
 
