@@ -11,6 +11,7 @@ on:
       - main
     paths:
       - terraform/**
+      
 env:
  # Credentials for deployment to AWS
  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
